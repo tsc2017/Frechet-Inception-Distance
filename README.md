@@ -1,10 +1,11 @@
 # Fréchet Inception Distance
 A new Tensorflow implementation of the "Fréchet Inception Distance" (FID) between two image distributions, along with a numpy interface. The FID can be used to evaluate generative models by calculating the FID between real and fake data distributions (lower is better).
-## Prequisites
+
+## Dependencies
 - `numpy` and `tensorflow-gpu`
 
 ## Features
-- Fast and memory-efficient
+- Fast, easy-to-use and memory-efficient
 - No prior knowledge about Tensorflow is necessary to use this code
 - Makes use of [TFGAN](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/gan)
 - Downloads InceptionV1 automatically
