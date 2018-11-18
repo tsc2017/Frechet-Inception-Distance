@@ -6,7 +6,7 @@ A new Tensorflow implementation of the "Fréchet Inception Distance" (FID) betwe
 ## Features
 - Fast and memory-efficient
 - No prior knowledge about Tensorflow is necessary to use this code
-- Makes use of 
+- Makes use of [TFGAN](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/gan)
 - Downloads InceptionV1 automatically
 - Compability with both Python2 and Python3
 
@@ -16,5 +16,5 @@ A new Tensorflow implementation of the "Fréchet Inception Distance" (FID) betwe
 
 ## Links
 
-- Paper [GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium ](https://arxiv.org/abs/1706.08500)
+- The Fréchet Inception Distance was proposed in the paper [GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium ](https://arxiv.org/abs/1706.08500)
 - Code for the [Inception Score](https://github.com/tsc2017/Inception-Score)
