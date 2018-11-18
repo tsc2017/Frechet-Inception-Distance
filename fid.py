@@ -47,7 +47,7 @@ def inception_activations(images = inception_images, num_splits = 1):
 
 activations =inception_activations()
 
-def get_inception_activations(inps, softmax=False):
+def get_inception_activations(inps):
     n_batches = inps.shape[0]//BATCH_SIZE
     preds = np.zeros([n_batches * BATCH_SIZE, 2048], dtype = np.float32)
     for i in range(n_batches):
