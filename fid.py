@@ -72,6 +72,6 @@ def get_fid(images1, images2):
     start_time = time.time()
     act1 = get_inception_activations(images1)
     act2 = get_inception_activations(images2)
-    dist = activations2distance(act1, act2)
+    fid = activations2distance(act1, act2)
     print('FID calculation time: %f s' % (time.time() - start_time))
     return fid
