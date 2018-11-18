@@ -49,12 +49,15 @@ activations =inception_activations()
 
 def get_inception_activations(inps):
     n_batches = inps.shape[0]//BATCH_SIZE
-    preds = np.zeros([n_batches * BATCH_SIZE, 2048], dtype = np.float32)
+    act = np.zeros([n_batches * BATCH_SIZE, 2048], dtype = np.float32)
     for i in range(n_batches):
         inp = inps[i * BATCH_SIZE:(i + 1) * BATCH_SIZE] / 255. * 2 - 1
-        preds[i * BATCH_SIZE:(i + 1) * BATCH_SIZE] = activations.eval({inception_images: inp})
-    return preds
+        act[i * BATCH_SIZE:(i + 1) * BATCH_SIZE] = activations.eval(feed_dict = {inception_images: inp})
+    return act
 
+def activations2distance(act1, act2):
+     return fcd.eval(feed_dict = {activations1: act1, activations2: act2})
+        
 def get_fid(images1, images2):
     assert(type(images1) == np.ndarray)
     assert(len(images1.shape) == 4)
@@ -67,8 +70,8 @@ def get_fid(images1, images2):
     assert(images1.shape == images2.shape), 'The two numpy arrays must have the same shape'
     print('Calculating FID with %i images from each distribution' % (images1.shape[0]))
     start_time = time.time()
-    preds1 = get_inception_activations(images1)
-    preds2 = get_inception_activations(images2)
-    fid = fcd.eval(feed_dict = {activations1: preds1, activations2: preds2})
+    act1 = get_inception_activations(images1)
+    act2 = get_inception_activations(images2)
+    dist = activations2distance(act1, act2)
     print('FID calculation time: %f s' % (time.time() - start_time))
     return fid
