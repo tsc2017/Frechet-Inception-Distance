@@ -1,5 +1,6 @@
 '''
 From https://github.com/tsc2017/frechet-inception-distance
+Code derived from https://github.com/tensorflow/tensorflow/blob/master/tensorflow/contrib/gan/python/eval/python/classifier_metrics_impl.py
 
 Usage:
     Call get_fid(images1, images2)
