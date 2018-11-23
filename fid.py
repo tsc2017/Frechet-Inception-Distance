@@ -1,5 +1,5 @@
 '''
-From https://github.com/tsc2017/frechet-inception-distance
+From https://github.com/tsc2017/Frechet-Inception-Distance
 Code derived from https://github.com/tensorflow/tensorflow/blob/master/tensorflow/contrib/gan/python/eval/python/classifier_metrics_impl.py
 
 Usage:
