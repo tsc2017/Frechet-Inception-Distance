@@ -9,7 +9,7 @@ A new Tensorflow implementation of the "Fréchet Inception Distance" (FID) betwe
 - No prior knowledge about Tensorflow is necessary to use this code
 - Makes use of [TFGAN](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/gan)
 - Downloads InceptionV1 automatically
-- Compatible with both Python2 and Python3
+- Compatible with both Python 2 and Python 3
 
 ## Usage
 - Call `get_fid(images1, images2)`, where `images1`, `images2` are numpy arrays with values ranging from 0 to 255 and shape in the form `[N, 3, HEIGHT, WIDTH]` where `N`, `HEIGHT` and `WIDTH` can be arbitrary. `dtype` of the images is recommended to be `np.uint8` to save CPU memory.
