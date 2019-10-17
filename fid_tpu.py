@@ -3,7 +3,7 @@ From https://github.com/tsc2017/Frechet-Inception-Distance
 Code derived from https://github.com/tensorflow/tensorflow/blob/master/tensorflow/contrib/gan/python/eval/python/classifier_metrics_impl.py
 
 Usage:
-    Call get_fid(images1, images2)
+    Call get_fid(images1, images2, session=YOUR_SESSION, strategy=YOUR_TPUSTRATEGY)
 Args:
     images1, images2: Numpy arrays with values ranging from 0 to 255 and shape in the form [N, 3, HEIGHT, WIDTH] where N, HEIGHT and WIDTH can be arbitrary. 
     dtype of the images is recommended to be np.uint8 to save CPU memory.
