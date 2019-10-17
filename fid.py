@@ -37,7 +37,7 @@ def inception_activations(images = inception_images, num_splits = 1):
     activations = tf.map_fn(
         fn = functools.partial(tfgan.eval.run_inception, output_tensor = 'pool_3:0'),
         elems = array_ops.stack(generated_images_list),
-        parallel_iterations = 1,
+        parallel_iterations = 8,
         back_prop = False,
         swap_memory = True,
         name = 'RunClassifier')
