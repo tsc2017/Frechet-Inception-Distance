@@ -7,7 +7,7 @@ Tensorflow implementation of the "Fréchet Inception Distance" (FID) between two
 
 ## Features
 - Fast, easy-to-use and memory-efficient
-- No prior knowledge about Tensorflow is necessary if your are using CPU or GPU
+- No prior knowledge about Tensorflow is necessary if your are using CPUs or GPUs
 - Makes use of [TF-GAN](https://github.com/tensorflow/gan)
 - Downloads InceptionV1 automatically
 - Compatible with both Python 2 and Python 3
