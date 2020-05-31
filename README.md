@@ -1,8 +1,9 @@
 # Fréchet Inception Distance
-A new Tensorflow implementation of the "Fréchet Inception Distance" (FID) between two image distributions, along with a numpy interface. The FID can be used to evaluate generative models by calculating the FID between real and fake data distributions (lower is better).
+Tensorflow implementation of the "Fréchet Inception Distance" (FID) between two image distributions, along with a numpy interface. The FID can be used to evaluate generative models by calculating the FID between real and fake data distributions (lower is better).
 
 ## Major Dependency
-- `tensorflow >= 1.14`
+- `tensorflow >= 1.14` 
+- `tensorflow-gan >= 2.0.0` (necessary if you are using Tensorflow 2)
 
 ## Features
 - Fast, easy-to-use and memory-efficient
@@ -16,6 +17,10 @@ A new Tensorflow implementation of the "Fréchet Inception Distance" (FID) betwe
 - Call `get_fid(images1, images2)`, where `images1`, `images2` are numpy arrays with values ranging from 0 to 255 and shape in the form `[N, 3, HEIGHT, WIDTH]` where `N`, `HEIGHT` and `WIDTH` can be arbitrary. `dtype` of the images is recommended to be `np.uint8` to save CPU memory.
 - A smaller `BATCH_SIZE` reduces GPU/TPU memory usage, but at the cost of a slight slowdown.
 - If you want to compute a general "Fréchet Classifier Distance" with activations (e.g., outputs of the last pooling layer) `act1` and `act2` from another classifier, call `activations2distance(act1, act2)`. `act1` and `act2` can be numpy arrays of a same arbitrary shape `[N, d]`.
+
+## Example
+[![Example In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1hgJJI5wuILxcHsmrkZMkHJtk6uDlKOwr?usp=sharing)
+
 ## Links
 
 - The Fréchet Inception Distance was proposed in the paper [GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium ](https://arxiv.org/abs/1706.08500)
