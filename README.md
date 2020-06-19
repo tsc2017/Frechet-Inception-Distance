@@ -3,7 +3,7 @@ Tensorflow implementation of the "Fréchet Inception Distance" (FID) between two
 
 ## Major Dependencies
 - `tensorflow == 1.14` or `tensorflow >=2`
-- `tensorflow-gan >= 2.0.0` (necessary only if you are using Tensorflow 2)
+- `tensorflow-gan >= 2.0.0` (necessary only if you are using TensorFlow 2)
 
 ## Features
 - Fast, easy-to-use and memory-efficient
