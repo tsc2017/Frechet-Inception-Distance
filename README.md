@@ -18,11 +18,11 @@ Tensorflow implementation of the "Fréchet Inception Distance" (FID) between two
 - If you want to compute a general "Fréchet Classifier Distance" with activations (e.g., outputs of the last pooling layer) `act1` and `act2` from another classifier, call `activations2distance(act1, act2)`. `act1` and `act2` can be numpy arrays of a same arbitrary shape `[N, d]`.
 
 ## Examples
-[![Example In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1hgJJI5wuILxcHsmrkZMkHJtk6uDlKOwr?usp=sharing) (GPU)
+GPU: [![Example In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1hgJJI5wuILxcHsmrkZMkHJtk6uDlKOwr?usp=sharing)
 
-[![Example In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1jen2-7TBufmRLdzXY0d83FZW-EYXjB4-?usp=sharing) (TPU, TF1)
+TPU and TF1: [![Example In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1jen2-7TBufmRLdzXY0d83FZW-EYXjB4-?usp=sharing)
 
-[![Example In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Uggw_wD_xucpiYZVtB5ivs-PQE3mz1Mf?usp=sharing) (TPU, TF2)
+TPU and TF2: [![Example In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Uggw_wD_xucpiYZVtB5ivs-PQE3mz1Mf?usp=sharing) 
 
 ## Links
 
