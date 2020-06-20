@@ -20,7 +20,6 @@ import time
 from tensorflow.python.ops import array_ops
 import tensorflow_gan as tfgan
 FIRST_RUN=[1]
-session=tf.compat.v1.InteractiveSession()
 # A smaller BATCH_SIZE reduces TPU memory usage, but at the cost of a slight slowdown
 BATCH_SIZE = 1000
 INCEPTION_URL = 'http://download.tensorflow.org/models/frozen_inception_v1_2015_12_05_v4.tar.gz'
