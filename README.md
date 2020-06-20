@@ -2,7 +2,7 @@
 Tensorflow implementation of the "Fréchet Inception Distance" (FID) between two image distributions, along with a numpy interface. The FID can be used to evaluate generative models by calculating the FID between real and fake data distributions (lower is better).
 
 ## Major Dependencies
-- `tensorflow == 1.14` or (`tensorflow>=1.15, <2` and `tensorflow-gan==1.0.0.dev0`) or (`tensorflow>=2` and `tensorflow-gan>=2.0.0`)
+- `tensorflow==1.14` or (`tensorflow==1.15` and `tensorflow-gan==1.0.0.dev0`) or (`tensorflow>=2` and `tensorflow-gan>=2.0.0`)
 
 ## Features
 - Fast, easy-to-use and memory-efficient
