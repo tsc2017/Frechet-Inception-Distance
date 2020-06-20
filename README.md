@@ -20,9 +20,9 @@ Tensorflow implementation of the "Fréchet Inception Distance" (FID) between two
 ## Examples
 GPU: [![Example In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1hgJJI5wuILxcHsmrkZMkHJtk6uDlKOwr?usp=sharing)
 
-TPU and TF1: [![Example In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1jen2-7TBufmRLdzXY0d83FZW-EYXjB4-?usp=sharing)
+TPU and TF1: [![Example In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1F0fXOKlzIkOSEAdIRa9oyacW34SUX2_v?usp=sharing)
 
-TPU and TF2: [![Example In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Uggw_wD_xucpiYZVtB5ivs-PQE3mz1Mf?usp=sharing) 
+TPU and TF2: [![Example In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Cb8erVc-v6zCG-cLfOWCIjFZPl5zQ4jl?usp=sharing) 
 
 ## Links
 
