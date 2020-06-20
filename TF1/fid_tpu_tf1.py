@@ -3,7 +3,7 @@ From https://github.com/tsc2017/Frechet-Inception-Distance
 Code derived from https://github.com/tensorflow/tensorflow/blob/master/tensorflow/contrib/gan/python/eval/python/classifier_metrics_impl.py
 
 Usage:
-    Call get_fid(images1, images2, session=YOUR_SESSION, strategy=YOUR_TPUSTRATEGY)
+    Call get_fid(images1, images2)
 Args:
     images1, images2: Numpy arrays with values ranging from 0 to 255 and shape in the form [N, 3, HEIGHT, WIDTH] where N, HEIGHT and WIDTH can be arbitrary. 
     dtype of the images is recommended to be np.uint8 to save CPU memory.
@@ -17,21 +17,22 @@ import functools
 import numpy as np
 import time
 from tensorflow.python.ops import array_ops
-tfgan = tf.contrib.gan
+if float('.'.join(tf.__version__.split('.')[:2])) < 1.15:
+    tfgan = tf.contrib.gan
+else:
+    import tensorflow_gan as tfgan
 FIRST_RUN=[1]
-session=tf.compat.v1.InteractiveSession()
 # A smaller BATCH_SIZE reduces GPU memory usage, but at the cost of a slight slowdown
 BATCH_SIZE = 8
 INCEPTION_URL = 'http://download.tensorflow.org/models/frozen_inception_v1_2015_12_05_v4.tar.gz'
 INCEPTION_FROZEN_GRAPH = 'inceptionv1_for_inception_score_tpu.pb'
 # Run images through Inception.
-inception_images = [None]
-activations1 = [None]
-activations2 = [None]
-fcd = [None]
+inception_images = tf.compat.v1.placeholder(tf.float32, [None, 3, None, None], name = 'inception_images')
+activations1 = tf.compat.v1.placeholder(tf.float32, [None, None], name = 'activations1')
+activations2 = tf.compat.v1.placeholder(tf.float32, [None, None], name = 'activations2')
+fcd = tfgan.eval.frechet_classifier_distance_from_activations(activations1, activations2)
 
-def inception_activations(num_splits = 1):
-    images = inception_images[0]
+def inception_activations(images = inception_images, num_splits = 1):
     images = tf.transpose(images, [0, 2, 3, 1])
     size = 299
     images = tf.compat.v1.image.resize_bilinear(images, [size, size])
@@ -57,23 +58,18 @@ activations =[None]
 
 def get_inception_activations(inps, session=None, strategy=None):
     if FIRST_RUN[0]:
-        with session.graph.as_default():
-            inception_images[0] = tf.compat.v1.placeholder(tf.float32, [None, 3, None, None], name = 'inception_images')
-            activations1[0] = tf.compat.v1.placeholder(tf.float32, [None, None], name = 'activations1')
-            activations2[0] = tf.compat.v1.placeholder(tf.float32, [None, None], name = 'activations2')
-            fcd[0] = tfgan.eval.frechet_classifier_distance_from_activations(activations1[0], activations2[0])
-            print('Running Inception for the first time, compiling...')
-            activations[0]=strategy.experimental_run(inception_activations).values[0]
-            FIRST_RUN[0]=0
+        print('Running Inception for the first time, compiling...')
+        activations[0]=strategy.experimental_run(inception_activations).values[0]
+        FIRST_RUN[0]=0
     n_batches = int(np.ceil(float(inps.shape[0]) / BATCH_SIZE))
     act = np.zeros([inps.shape[0], 2048], dtype = np.float32)
     for i in range(n_batches):
         inp = inps[i * BATCH_SIZE : (i + 1) * BATCH_SIZE] / 255. * 2 - 1
-        act[i * BATCH_SIZE : i * BATCH_SIZE + min(BATCH_SIZE, inp.shape[0])] = session.run(activations[0], feed_dict = {inception_images[0]: inp})
+        act[i * BATCH_SIZE : i * BATCH_SIZE + min(BATCH_SIZE, inp.shape[0])] = session.run(activations[0], feed_dict = {inception_images: inp})
     return act
 
-def activations2distance(act1, act2, session=None):
-    return session.run(fcd[0], feed_dict = {activations1[0]: act1, activations2[0]: act2})
+def activations2distance(act1, act2):
+    return session.run(fcd, feed_dict = {activations1: act1, activations2: act2})
         
 def get_fid(images1, images2, session=None, strategy=None):
     assert(type(images1) == np.ndarray)
@@ -89,6 +85,6 @@ def get_fid(images1, images2, session=None, strategy=None):
     start_time = time.time()
     act1 = get_inception_activations(images1, session, strategy)
     act2 = get_inception_activations(images2, session, strategy)
-    fid = activations2distance(act1, act2, session)
+    fid = activations2distance(act1, act2)
     print('FID calculation time: %f s' % (time.time() - start_time))
     return fid
