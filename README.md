@@ -2,8 +2,7 @@
 Tensorflow implementation of the "Fréchet Inception Distance" (FID) between two image distributions, along with a numpy interface. The FID can be used to evaluate generative models by calculating the FID between real and fake data distributions (lower is better).
 
 ## Major Dependencies
-- `tensorflow == 1.14` or `tensorflow >=2`
-- `tensorflow-gan >= 2.0.0` (necessary only if you are using TensorFlow 2)
+- `tensorflow == 1.14` or (`tensorflow>=1.15, <2` and `tensorflow-gan==1.0.0.dev0`) or (`tensorflow>=2` and `tensorflow-gan>=2.0.0`)
 
 ## Features
 - Fast, easy-to-use and memory-efficient
@@ -18,8 +17,12 @@ Tensorflow implementation of the "Fréchet Inception Distance" (FID) between two
 - A smaller `BATCH_SIZE` reduces GPU/TPU memory usage, but at the cost of a slight slowdown.
 - If you want to compute a general "Fréchet Classifier Distance" with activations (e.g., outputs of the last pooling layer) `act1` and `act2` from another classifier, call `activations2distance(act1, act2)`. `act1` and `act2` can be numpy arrays of a same arbitrary shape `[N, d]`.
 
-## Example
-[![Example In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1hgJJI5wuILxcHsmrkZMkHJtk6uDlKOwr?usp=sharing)
+## Examples
+[![Example In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1hgJJI5wuILxcHsmrkZMkHJtk6uDlKOwr?usp=sharing) (GPU)
+
+[![Example In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1jen2-7TBufmRLdzXY0d83FZW-EYXjB4-?usp=sharing) (TPU, TF1)
+
+[![Example In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Uggw_wD_xucpiYZVtB5ivs-PQE3mz1Mf?usp=sharing) (TPU, TF2)
 
 ## Links
 
